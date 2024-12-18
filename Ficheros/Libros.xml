@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libros>
+  <libro>
+    <id>0006</id>
+    <titulo>La sombra del viento</titulo>
+    <autor>Carlos Ruiz Zafón</autor>
+    <isbn>978-84-08-11100-9</isbn>
+    <anno>2001</anno>
+  </libro>
+  <libro>
+    <id>0004</id>
+    <titulo>1984</titulo>
+    <autor>George Orwell</autor>
+    <isbn>978-84-376-0495-4</isbn>
+    <anno>1949</anno>
+  </libro>
+  <libro>
+    <id>0005</id>
+    <titulo>Los pilares de la tierra</titulo>
+    <autor>Ken Follett</autor>
+    <isbn>978-84-01-33153-4</isbn>
+    <anno>1989</anno>
+  </libro>
+  <libro>
+    <id>0003</id>
+    <titulo>Cien años de soledad</titulo>
+    <autor>Gabriel García Márquez</autor>
+    <isbn>978-84-376-0494-7</isbn>
+    <anno>1967</anno>
+  </libro>
+  <libro>
+    <id>753</id>
+    <titulo>quetal</titulo>
+    <autor>jose</autor>
+    <isbn>7f8dsa</isbn>
+    <anno>7894</anno>
+  </libro>
+</libros>

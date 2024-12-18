@@ -1,0 +1,8 @@
+0006,La sombra del viento,Carlos Ruiz Zafón,978-84-08-11100-9,2001
+0004,1984,George Orwell,978-84-376-0495-4,1949
+123,nuevo,nuevo,21ed,123
+0005,Los pilares de la tierra,Ken Follett,978-84-01-33153-4,1989
+0002,El nombre del viento,Patrick Rothfuss,978-84-01-33720-8,2007
+741,nuevo,nuevi,3rd2,234
+0003,Cien años de soledad,Gabriel García Márquez,978-84-376-0494-7,1967
+0001,Una noche de niebla y furia,Sarah J. Maas,978-84-08-29096-4,2016
