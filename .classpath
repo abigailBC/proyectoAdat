@@ -35,5 +35,9 @@
 	<classpathentry kind="lib" path="libs/json/json_simple-1.1.jar"/>
 	<classpathentry kind="lib" path="libs/json/okhttp-2.6.0.jar"/>
 	<classpathentry kind="lib" path="libs/json/okio-1.6.0.jar"/>
+	<classpathentry kind="lib" path="libs/converter.jar"/>
+	<classpathentry kind="lib" path="libs/explorer.jar"/>
+	<classpathentry kind="lib" path="libs/objectdb.jar"/>
+	<classpathentry kind="lib" path="libs/objectdb-jee.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

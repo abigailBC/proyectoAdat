@@ -101,12 +101,12 @@ public class SqliteManager extends Manager {
 			pstmt.execute(query0);
 			for (Map.Entry<String, Libro> entry : libros.entrySet()) {
 				Libro libro = entry.getValue();
-				String id = "'" + libro.getId() + "'";
+				String id ="'" + libro.getId() + "'";
 				String titulo = "'" + libro.getTitulo() + "'";
 				String autor = "'" + libro.getAutor() + "'";
 				String isbn = "'" + libro.getIsbn() + "'";
 				int anno = libro.getAnno();
-				String query = "INSERT INTO Libros(id, título, autor, isbn, anno) VALUES(" + id + ", " + titulo + ", "
+				String query = "INSERT INTO Libros(id, título, autor, isbn, anno) VALUES( "+ id + ", " + titulo + ", "
 						+ autor + ", " + isbn + ", " + anno + ")";
 				pstmt.executeUpdate(query);
 			}

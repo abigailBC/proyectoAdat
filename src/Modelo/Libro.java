@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+
 
 //Marcas de hibernate en el fichero de la clase. Así no hace falta crear un fichero Hibernate por cada clase.
 @Entity

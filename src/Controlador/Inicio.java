@@ -1,5 +1,4 @@
 package Controlador;
-//Programa del equipo de Abigail, Geffrey y Javier
 import Vista.Mensajito;
 import Vista.Menu;
 
@@ -12,10 +11,10 @@ public class Inicio {
 	public static void main(String[] args) {
 		Mensajito mensajito = new Mensajito();
 		Menu menuu = new Menu();
-		int tipoFichero = 0;
+		int tipoFichero = 100;
 		try {
 
-			while (tipoFichero != 7) {
+			while (tipoFichero != 0) {
 				// Ejecución del primer menú (en la vista).
 				tipoFichero = menuu.menu1();
 				Manager miObjeto = null;
@@ -40,7 +39,16 @@ public class Inicio {
 				case 6:
 					miObjeto = new SqliteManager();
 					break;
-				case 7:
+			/*	case 7:
+					miObjeto = new PhpManager();
+					break;*/
+				case 8:
+					miObjeto = new ObjectdbManager();
+					break;
+			/*	case 9:
+			 		miObjeto = new BasexManager();
+			 */
+				case 0:
 					BbddManager bdm = new BbddManager();
 					bdm.closeConn();
 					SqliteManager.cerrarConexion();
@@ -48,7 +56,7 @@ public class Inicio {
 					System.out.println("El programa terminará");
 					return;
 				default:
-					System.out.println("Ha habido un error, vuelve a" + "seleccionar opción.");
+					System.out.println("Ha habido un error, vuelve a seleccionar opción.");
 					break;
 				}
 				// Ejecución del segundo menú

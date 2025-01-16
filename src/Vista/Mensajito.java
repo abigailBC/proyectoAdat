@@ -17,14 +17,14 @@ public class Mensajito {
 	// pedir el ID para mostrar, añadir o eliminar
 
 	public String viewOne() {
-		String impreso = "";
+		String impreso="";
 		System.out.println("Escribe el ID del libro que quieres ver: ");
 		impreso = sc.nextLine();
 		return impreso;
 	}
 
 	public String viewEdit() {
-		String editado = "";
+		String editado="";
 		System.out.println("Elige el ID del libro que quieres editar: ");
 		editado = sc.nextLine();
 		return editado;
@@ -65,7 +65,7 @@ public class Mensajito {
 
 	
   public Libro pedirLibro() {
-	  String editado="";
+	  String editado= "";
 	  System.out.println("Elige el ID del libro: ");
 	  editado=sc.nextLine();
 	  System.out.println("Introduce el nombre del libro: ");
