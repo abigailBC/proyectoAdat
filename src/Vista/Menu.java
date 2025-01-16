@@ -8,17 +8,17 @@ public class Menu {
 	private int cambioArchivo;
 
 	public int menu1() {
-		int tipoFichero;
+		int tipoFichero=0;
 		try {
 			System.out.println("Bienvenido. Elija una opción:\n1.Fichero de texto"
-					+ "\n2.Fichero Binario\n3.Fichero XML\n4.Base de datos\n5.Hibernate\n6.SQLite\n7.Salir");
+					+ "\n2.Fichero Binario\n3.Fichero XML\n4.Base de datos\n5.Hibernate\n6.SQLite\n7.PHP\n8.Objectdb\n9.BaseX\n0.Salir");
 			tipoFichero = sc.nextInt();
 			return tipoFichero;
-			
+
 		}catch(InputMismatchException e) {
 			System.out.println("Su entrada no es un número");
-			return 7;
 		}
+		return tipoFichero;
 
 	}
 
@@ -32,6 +32,7 @@ public class Menu {
 			return tipoaccion;
 		}catch(InputMismatchException e) {
 			System.out.println("Su entrada no es un número");
+			tipoaccion=0;
 		}
 		return tipoaccion;
 		

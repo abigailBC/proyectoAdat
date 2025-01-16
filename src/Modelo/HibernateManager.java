@@ -12,7 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateManager extends Manager{
-	HashMap<String, Libro>libros = new HashMap<>();
+	HashMap <String, Libro> libros = new HashMap<>();
 
 	@Override
 	public HashMap<String, Libro> recorrer() {

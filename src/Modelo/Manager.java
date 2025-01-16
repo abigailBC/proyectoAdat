@@ -38,7 +38,7 @@ public abstract class Manager {
 			guardarLibros(libros);
 			todoOk=true;
 		}catch(Exception e) {
-			System.out.println("Ha habido un problema añadiendo el dato "+e.getMessage());
+			System.out.println("Ha habido un problema añadiendo el dato: "+e.getMessage());
 		}
 		return todoOk;
 	}
@@ -55,7 +55,7 @@ public abstract class Manager {
 			guardarLibros(libros);
 			todoOk=true;
 		}catch(Exception e) {
-			System.out.println("Ha habido un problema añadiendo los datos "+e.getMessage());
+			System.out.println("Ha habido un problema añadiendo los datos: "+e.getMessage());
 		}
 		
 		return todoOk;
@@ -70,7 +70,7 @@ public abstract class Manager {
 			guardarLibros(libros);
 			todoOk=true;
 		}catch(Exception e) {
-			System.out.println("Ha habido un problema editando el dato "+e.getMessage());
+			System.out.println("Ha habido un problema editando el dato: "+e.getMessage());
 		}
 		return todoOk;
 	}
@@ -86,7 +86,7 @@ public abstract class Manager {
 				todoOk=true;
 			}
 		}catch(Exception e) {
-			System.out.println("Ha habido un problema borrando el dato "+e.getMessage());
+			System.out.println("Ha habido un problema borrando el dato: "+e.getMessage());
 		}
 		return todoOk;
 

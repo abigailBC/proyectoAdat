@@ -37,19 +37,19 @@ public class BinaryManager extends Manager implements Serializable {
 	//Código no ejecutado. Serializa el fichero binario para meter los objetos para cuando se necesite resetear el fichero.
 	public void inicioBinario() {
 		try {
-			Libro libro1 = new Libro("0001", "Una noche de niebla y furia", "Sarah J. Maas", "978-84-08-29096-4", 2016);
-			libros.put("0001", libro1);
-			Libro libro2 = new Libro("0002", "El nombre del viento", "Patrick Rothfuss", "978-84-01-33720-8", 2007);
-			libros.put("0002", libro2);
-			Libro libro3 = new Libro("0003", "Cien años de soledad", "Gabriel García Márquez", "978-84-376-0494-7",
+			Libro libro1 = new Libro("001", "Una noche de niebla y furia", "Sarah J. Maas", "978-84-08-29096-4", 2016);
+			libros.put("001", libro1);
+			Libro libro2 = new Libro("002", "El nombre del viento", "Patrick Rothfuss", "978-84-01-33720-8", 2007);
+			libros.put("002", libro2);
+			Libro libro3 = new Libro("003", "Cien años de soledad", "Gabriel García Márquez", "978-84-376-0494-7",
 					1967);
-			libros.put("0003", libro3);
-			Libro libro4 = new Libro("0004", "1984", "George Orwell", "978-84-376-0495-4", 1949);
-			libros.put("0004", libro4);
-			Libro libro5 = new Libro("0005", "Los pilares de la tierra", "Ken Follett", "978-84-01-33153-4", 1989);
-			libros.put("0005", libro5);
-			Libro libro6 = new Libro("0006", "La sombra del viento", "Carlos Ruiz Zafón", "978-84-08-11100-9", 2001);
-			libros.put("0006", libro6);
+			libros.put("003", libro3);
+			Libro libro4 = new Libro("004", "1984", "George Orwell", "978-84-376-0495-4", 1949);
+			libros.put("004", libro4);
+			Libro libro5 = new Libro("005", "Los pilares de la tierra", "Ken Follett", "978-84-01-33153-4", 1989);
+			libros.put("005", libro5);
+			Libro libro6 = new Libro("006", "La sombra del viento", "Carlos Ruiz Zafón", "978-84-08-11100-9", 2001);
+			libros.put("006", libro6);
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ruta));
 			for (Map.Entry<String, Libro> entry : libros.entrySet()) {
 				Libro valor = entry.getValue();
