@@ -20,14 +20,8 @@ public abstract class Manager {
 	
 	public Libro printOne(String impreso) {
 		HashMap <String, Libro> libros=recorrer();
-		Libro libro=libros.get(impreso);
-		return libro;
+        return libros.get(impreso);
 				
-	}
-	
-	public HashMap<String, Libro> printAll() {
-		HashMap <String, Libro> libros=recorrer();
-		return libros;
 	}
 	
 	public Boolean addOne(Libro libro) {

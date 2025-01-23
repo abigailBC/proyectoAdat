@@ -3,6 +3,7 @@ import Vista.Mensajito;
 import Vista.Menu;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import Modelo.*;
 //Clase Main, ejecuta el programa
@@ -11,10 +12,10 @@ public class Inicio {
 	public static void main(String[] args) {
 		Mensajito mensajito = new Mensajito();
 		Menu menuu = new Menu();
-		int tipoFichero = 100;
+		int tipoFichero;
 		try {
 
-			while (tipoFichero != 0) {
+			while (true) {
 				// Ejecución del primer menú (en la vista).
 				tipoFichero = menuu.menu1();
 				Manager miObjeto = null;
@@ -39,15 +40,15 @@ public class Inicio {
 				case 6:
 					miObjeto = new SqliteManager();
 					break;
-			/*	case 7:
+				case 7:
 					miObjeto = new PhpManager();
-					break;*/
+					break;
 				case 8:
 					miObjeto = new ObjectdbManager();
 					break;
-			/*	case 9:
+				case 9:
 			 		miObjeto = new BasexManager();
-			 */
+					break;
 				case 0:
 					BbddManager bdm = new BbddManager();
 					bdm.closeConn();
@@ -70,8 +71,11 @@ public class Inicio {
 				// Leer uno
 				case 1:
 					String impreso = mensajito.viewOne();
-					Libro libro = miObjeto.printOne(impreso);
-					if (libro != null) {
+                    Libro libro = null;
+                    if (miObjeto != null) {
+                        libro = miObjeto.printOne(impreso);
+                    }
+                    if (libro != null) {
 						mensajito.mostrarLibro(libro);
 					} else {
 						mensajito.noEncontrado();
@@ -81,15 +85,16 @@ public class Inicio {
 					break;
 				// Leer muchos
 				case 2:
-					HashMap<String, Libro> libros = miObjeto.printAll();
-					mensajito.imprimirHashMap(libros);
-					Thread.sleep(1500);
+                    HashMap<String, Libro> libros = Objects.requireNonNull(miObjeto).recorrer();
+                    mensajito.imprimirHashMap(libros);
+                    Thread.sleep(1500);
 					mensajito.separador();
 					break;
 				// Añadir uno
 				case 3:
 					Libro libroNuevo=mensajito.pedirLibro();
-					if (miObjeto.addOne(libroNuevo) == true) {
+                    assert miObjeto != null;
+                    if (miObjeto.addOne(libroNuevo)) {
 						mensajito.sobreescrito();
 					} else {
 						mensajito.problema();
@@ -100,48 +105,42 @@ public class Inicio {
 					break;
 				// Añadir muchos
 				case 4:
-					HashMap<String, Libro> librosNuevos = new HashMap<String, Libro>();
+					HashMap<String, Libro> librosNuevos = new HashMap<>();
 					int cantidad = mensajito.cantidadNuevos();
 					for (int i = 0; i < cantidad; i++) {
 						Libro libroNuevos = mensajito.pedirLibro();
 						librosNuevos.put(libroNuevos.getId(), libroNuevos);
 					}
-					if (miObjeto.addMore(librosNuevos) == true) {
-						mensajito.sobreescrito();
+                    if (miObjeto != null && miObjeto.addMore(librosNuevos)) {
+                        mensajito.sobreescrito();
 
-					} else {
-						mensajito.problema();
-					}
-					Thread.sleep(1500);
+                    }
+                    Thread.sleep(1500);
 					mensajito.separador();
 					break;
 				// Editar uno
 				case 5:
 					Libro libroEditado = mensajito.pedirLibro();
-					if (miObjeto.editOne(libroEditado) == true) {
-						mensajito.sobreescrito();
+                    if (miObjeto != null && miObjeto.editOne(libroEditado)) {
+                        mensajito.sobreescrito();
 
-					} else {
-						mensajito.problema();
-					}
-					Thread.sleep(1500);
+                    }
+                    Thread.sleep(1500);
 					mensajito.separador();
 
 					break;
 				// Borrar uno
 				case 6:
 					String libroBorrado = mensajito.viewDel();
-					if (miObjeto.deleteOne(libroBorrado) == true) {
-						mensajito.sobreescrito();
-					} else {
-						mensajito.problema();
-					}
-					Thread.sleep(1500);
+                    if (miObjeto != null && miObjeto.deleteOne(libroBorrado)) {
+                        mensajito.sobreescrito();
+                    }
+                    Thread.sleep(1500);
 					mensajito.separador();
 					break;
 				// Pasar el archivo a otra extensión
 				case 7:
-					Manager miObjeto2 = null;
+					Manager miObjeto2;
 					// Menú 3: selección de tipo de archivo al que se quiere trasladar el contenido
 					int cambioArchivo = menuu.menu3(tipoFichero);
 					switch (cambioArchivo) {
@@ -151,28 +150,39 @@ public class Inicio {
 						// Se crea un objeto para controlar el volcado de contenido en el segundo archivo
 						miObjeto2 = new TextManager();
 						// Se guarda el hashmap creado de miObjeto1 en el archivo de miObjeto2
-						miObjeto2.guardarLibros(miObjeto.recorrer());
-						break;
+                        if (miObjeto != null) {
+                            miObjeto2.guardarLibros(miObjeto.recorrer());
+                        }
+                        break;
 					case 2:
 						miObjeto2 = new BinaryManager();
-						miObjeto2.guardarLibros(miObjeto.recorrer());
-						break;
+                        if (miObjeto != null) {
+                            miObjeto2.guardarLibros(miObjeto.recorrer());
+                        }
+                        break;
 					case 3:
 						miObjeto2 = new XMLManager();
-						miObjeto2.guardarLibros(miObjeto.recorrer());
-						break;
+                        if (miObjeto != null) {
+                            miObjeto2.guardarLibros(miObjeto.recorrer());
+                        }
+                        break;
 					case 4:
 						miObjeto2 = new BbddManager();
-						miObjeto2.guardarLibros(miObjeto.recorrer());
+                        assert miObjeto != null;
+                        miObjeto2.guardarLibros(miObjeto.recorrer());
 
 						break;
 					case 5:
 						miObjeto2 = new HibernateManager();
-						miObjeto2.guardarLibros(miObjeto.recorrer());
+						if (miObjeto != null) {
+							miObjeto2.guardarLibros(miObjeto.recorrer());
+						}
 						break;
 					case 6:
 						miObjeto2 = new SqliteManager();
-						miObjeto2.guardarLibros(miObjeto.recorrer());
+                        if (miObjeto != null) {
+							miObjeto2.guardarLibros(miObjeto.recorrer());
+						}
 						break;
 					}
 					Thread.sleep(1500);
@@ -185,8 +195,7 @@ public class Inicio {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(e);
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 
