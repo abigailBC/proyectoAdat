@@ -37,21 +37,112 @@ public class ObjectdbManager extends Manager {
 		EntityManager em = emf.createEntityManager();
 		// Creamos objetos (si lo ejecutamos varias veces se repiten puesto que no
 		// estamos controlando los id porque son generados)
-		for(Map.Entry<String, Libro>entry : libros.entrySet()) {
-			Libro libro=entry.getValue();
-			String id="'"+libro.getId()+"'";
-			String titulo="'"+libro.getTitulo()+"'";
-			String autor="'"+libro.getAutor()+"'";
-			String isbn="'"+libro.getIsbn()+"'";
-			String anno="'"+libro.getAnno()+"'";
-		// Guardamos objetos (en lugar de session.save se usa entityManager.persist)
-		// Abrimos transaccion
+		for (Map.Entry<String, Libro> entry : libros.entrySet()) {
+			Libro libro = entry.getValue();
+			String id = "'" + libro.getId() + "'";
+			String titulo = "'" + libro.getTitulo() + "'";
+			String autor = "'" + libro.getAutor() + "'";
+			String isbn = "'" + libro.getIsbn() + "'";
+			String anno = "'" + libro.getAnno() + "'";
+			// Guardamos objetos (en lugar de session.save se usa entityManager.persist)
+			// Abrimos transaccion
 			em.getTransaction().begin();
-		//se pasa por parámetro el objeto que se quiere grabar persist==save
+			//se pasa por parámetro el objeto que se quiere grabar persist==save
 			em.persist(libro);
-		// Hacemos commit de la transaccion
+			// Hacemos commit de la transaccion
 			em.getTransaction().commit();
 			em.close();
 		}
 	}
 }
+
+	/*clases de Jaime
+	public class Jaimeclases() {
+		try{
+			// Creamos el entitymanager (que vendría a ser lo mismo que la sesión) mediante
+			// "factoria"
+			// Introducimos la ruta en la que se va a crear la BD orientada a objetos. En
+			// este caso es dentro del mismo proyecto
+			//EntityManagerFactory emf = Persistence.createEntityManagerFactory("$objectdb/db/address-book.odb");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("db/address-book.odb");
+			EntityManager em = emf.createEntityManager();
+			// En primer lugar "resetamos" borrando todos los objetos
+			// Abrimos transaccion
+			System.out.println("RESETEANDO BD. BORRANDO TODOS LOS OBJETOS");
+			em.getTransaction().begin();
+			em.createQuery("DELETE FROM AddressBook a").executeUpdate();
+			em.getTransaction().commit();
+			// Creamos objetos (si lo ejecutamos varias veces se repiten puesto que no
+			// estamos controlando los id porque son generados)
+			System.out.println("CREANDO Y ALMACENANDO OBJETOS");
+			AddressBook b1 = new AddressBook("Jaime", "Luna 27");
+			AddressBook b2 = new AddressBook("Paco", "Sol 32");
+			AddressBook b3 = new AddressBook("Luis", "Luna 1");
+			AddressBook b4 = new AddressBook("Ana", "Saturno 23");
+			AddressBook b5 = new AddressBook("Maria", "Postigo 45");
+			// Guardamos objetos (en lugar de session.save se usa entityManager.persist)
+			// Abrimos transaccion
+			em.getTransaction().begin();
+			em.persist(b1);
+			em.persist(b2);
+			em.persist(b3);
+			em.persist(b4);
+			em.persist(b5);
+			// Hacemos commit de la transaccion
+			em.getTransaction().commit();
+			// Lanzamos query para comprobar que se han almacenado los objetos
+			// Al igual que pasaba cuando utilizabamos hibernate con ficheros de mapeo, se
+			// crea una lista de objetos
+			TypedQuery<AddressBook> query = em.createQuery("SELECT b FROM AddressBook b", AddressBook.class);
+			List<AddressBook> results = query.getResultList();
+			System.out.println("MOSTRAMOS TODOS LOS OBJETOS");
+			for (AddressBook bb : results) {
+				System.out.println(bb);
+			}
+			// Modificamos un objeto (volvemos a abrir transacción)
+			b1.setAddress("Java 87");
+			em.getTransaction().begin();
+			em.merge(b1);
+			em.getTransaction().commit();
+			// Volvemos a lanzar query para comprobar que se ha modificado el objeto
+			System.out.println("MOSTRAR TODOS DESPUES DE MODIFICACION");
+			query = em.createQuery("SELECT b FROM AddressBook b", AddressBook.class);
+			results = query.getResultList();
+			for (AddressBook bb : results) {
+				System.out.println(bb);
+			}
+			// Se podría hacer la query con algún criterio de búsqueda
+			query = em.createQuery("SELECT b FROM AddressBook b WHERE b.name='Jaime'", AddressBook.class);
+			results = query.getResultList();
+			System.out.println("RESULTADOS DE QUERY CON BÚSQUEDA DE JAIME");
+			for (AddressBook bb : results) {
+				System.out.println(bb);
+			}
+			// Borramos un objeto (volvemos a abrir transacción)
+			System.out.println("BORRANDO OBJETO JAIME");
+			em.getTransaction().begin();
+			em.remove(b1);
+			em.getTransaction().commit();
+			// Volvemos a lanzar query para comprobar que se ha modificado el objeto
+			query = em.createQuery("SELECT b FROM AddressBook b", AddressBook.class);
+			results = query.getResultList();
+			for (AddressBook bb : results) {
+				System.out.println(bb);
+			}
+			// Cerramos conexion
+			em.close();
+			emf.close();
+		} catch(
+		javax.persistence.PersistenceException ex){
+			System.err.println("Se ha producido un error an intentar acceder a la base de datos\n"
+					+ "Probablemente sea porque está abierta por el ObjectDB explorer");
+
+		} catch(Exception ex){
+			System.err.println("Se ha producido una excepción deconocida");
+			System.err.println(ex.getMessage());
+			System.err.println("Descomenta la traza para más detalles");
+			// ex.printStackTrace();
+		}
+
+	}
+}*/

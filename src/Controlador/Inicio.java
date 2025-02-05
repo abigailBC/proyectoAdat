@@ -49,6 +49,9 @@ public class Inicio {
 				case 9:
 			 		miObjeto = new BasexManager();
 					break;
+				case 10:
+					miObjeto = new MongoManager();
+					break;
 				case 0:
 					BbddManager bdm = new BbddManager();
 					bdm.closeConn();
