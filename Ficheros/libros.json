@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "isbn": "978-0060883287",
+    "anno": 1967
+  },
+  {
+    "id": "2",
+    "titulo": "Don Quijote de la Mancha",
+    "autor": "Miguel de Cervantes",
+    "isbn": "978-8491050443",
+    "anno": 1605
+  },
+  {
+    "id": "3",
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "isbn": "978-0451524935",
+    "anno": 1949
+  },
+  {
+    "id": "4",
+    "titulo": "El amor en los tiempos del cólera",
+    "autor": "Gabriel García Márquez",
+    "isbn": "978-0307389732",
+    "anno": 1985
+  },
+  {
+    "id": "5",
+    "titulo": "La sombra del viento",
+    "autor": "Carlos Ruiz Zafón",
+    "isbn": "978-8493221490",
+    "anno": 2001
+  }
+]

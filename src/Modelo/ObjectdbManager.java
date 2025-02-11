@@ -1,5 +1,4 @@
 package Modelo;
-import Modelo.Libro;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,24 +34,27 @@ public class ObjectdbManager extends Manager {
 	public void guardarLibros(HashMap<String, Libro> libros) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("db/libros.odb");
 		EntityManager em = emf.createEntityManager();
-		// Creamos objetos (si lo ejecutamos varias veces se repiten puesto que no
-		// estamos controlando los id porque son generados)
+
 		for (Map.Entry<String, Libro> entry : libros.entrySet()) {
 			Libro libro = entry.getValue();
-			String id = "'" + libro.getId() + "'";
-			String titulo = "'" + libro.getTitulo() + "'";
-			String autor = "'" + libro.getAutor() + "'";
-			String isbn = "'" + libro.getIsbn() + "'";
-			String anno = "'" + libro.getAnno() + "'";
-			// Guardamos objetos (en lugar de session.save se usa entityManager.persist)
-			// Abrimos transaccion
-			em.getTransaction().begin();
-			//se pasa por parámetro el objeto que se quiere grabar persist==save
-			em.persist(libro);
-			// Hacemos commit de la transaccion
-			em.getTransaction().commit();
-			em.close();
+
+			try {
+				em.getTransaction().begin();
+				Libro libroExistente = em.find(Libro.class, libro.getId());
+				if (libroExistente != null) {
+					em.merge(libro); // Actualiza si existe
+				} else {
+					em.persist(libro); // Inserta si no existe
+				}
+				em.getTransaction().commit();
+			} catch (Exception e) {
+				if (em.getTransaction().isActive()) {
+					em.getTransaction().rollback();
+				}
+				e.printStackTrace();
+			}
 		}
+		em.close();
 	}
 }
 
