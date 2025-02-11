@@ -7,8 +7,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MongoManager extends Manager{
     HashMap<String,Libro> libros = new HashMap<>();
@@ -41,6 +40,17 @@ public class MongoManager extends Manager{
 
     @Override
     public void guardarLibros(HashMap<String, Libro> libros) {
+        MongoCursor<Document> resultado = miColeccion.find().iterator();
+        Set<String> idsBbdd = new HashSet<>();
+
+        // Primero, recopilamos todos los IDs de los documentos en la base de datos
+        while (resultado.hasNext()) {
+            Document doc = resultado.next();
+            String id = doc.getString("id");
+            idsBbdd.add(id);
+        }
+
+        // Luego, actualizamos o insertamos los libros del HashMap
         for (Map.Entry<String, Libro> entry : libros.entrySet()) {
             Libro l = entry.getValue();
             Document filtro = new Document("id", l.getId()); // Filtro para buscar por id
@@ -56,6 +66,15 @@ public class MongoManager extends Manager{
 
             // Realiza la operación de upsert
             miColeccion.updateOne(filtro, updateOperationDocument, new UpdateOptions().upsert(true));
+        }
+
+        // Finalmente, eliminamos los documentos que no están en el HashMap
+        Set<String> idsEnHashMap = libros.keySet();
+        idsBbdd.removeAll(idsEnHashMap); // Quedan solo los IDs que no están en el HashMap
+
+        for (String id : idsBbdd) {
+            Document filtro = new Document("id", id);
+            miColeccion.deleteOne(filtro);
         }
     }
     /*

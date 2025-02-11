@@ -41,20 +41,37 @@ public class HibernateManager extends Manager{
 	@Override
 	public void guardarLibros(HashMap<String, Libro> libros) {
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session s=sf.openSession();
-        try {
-			for(Map.Entry<String, Libro>entry : libros.entrySet()) {
-				Libro libro=entry.getValue();
-		        s.beginTransaction();
-				s.saveOrUpdate(libro);
-			    s.getTransaction().commit();
+		Session s = sf.openSession();
+
+		try {
+			s.beginTransaction();
+
+			// Obtener todos los libros de la base de datos
+			TypedQuery<Libro> q = s.createQuery("from Libro", Libro.class);
+			List<Libro> results = q.getResultList();
+
+			// Recorrer la lista de libros de la base de datos
+			for (Libro libro : results) {
+				if (!libros.containsKey(libro.getId())) {
+					s.delete(libro);
+				}
 			}
-	        s.close();
-	        
-        }catch(Exception e) {
-			System.err.println("Error al sobrescribir los datos con Hibernate: "+e.getMessage());
-        }
-		
+
+			// Guardar los libros del HashMap en la base de datos
+			for (Libro libro : libros.values()) {
+				s.saveOrUpdate(libro);
+			}
+
+			s.getTransaction().commit();
+		} catch (Exception e) {
+			if (s.getTransaction() != null) {
+				s.getTransaction().rollback();
+			}
+			System.err.println("Error al borrar los datos con Hibernate: " + e.getMessage());
+		} finally {
+			s.close();
+			sf.close();
+		}
 	}
 
 }

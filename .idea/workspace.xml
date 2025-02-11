@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c12df92-abcc-4815-b24e-61525c01a1a3" name="Changes" comment="Implementación BaseX y Mongo">
-      <change afterPath="$PROJECT_DIR$/Ficheros/libros.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/libros.odb" beforeDir="false" afterPath="$PROJECT_DIR$/db/libros.odb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/libros.odb$" beforeDir="false" afterPath="$PROJECT_DIR$/db/libros.odb$" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/log/odb20250115.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/BasexManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/BasexManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/HibernateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/HibernateManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/MongoManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/MongoManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/ObjectdbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/ObjectdbManager.java" afterDir="false" />
     </list>
@@ -37,26 +36,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Inicio.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "rama1",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/mixol/Downloads/ADAT_Ejemplo_ObjectDB",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Inicio.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;rama1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mixol/Downloads/ADAT_BasketHiber_V2_0&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mixol\segundoCurso\ProyectoDefinitivo\libs\mongo" />
@@ -112,7 +111,8 @@
       <workItem from="1738758384661" duration="8199000" />
       <workItem from="1738782896265" duration="3780000" />
       <workItem from="1739201688312" duration="8837000" />
-      <workItem from="1739267192484" duration="2856000" />
+      <workItem from="1739267192484" duration="7615000" />
+      <workItem from="1739285406446" duration="3239000" />
     </task>
     <task id="LOCAL-00001" summary="Actualización Objectdb y menú">
       <option name="closed" value="true" />
@@ -146,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738784901127</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Implementación BaseX y Mongo">
+      <option name="closed" value="true" />
+      <created>1739270413678</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739270413678</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
