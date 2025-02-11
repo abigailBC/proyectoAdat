@@ -4,6 +4,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
 
 import java.util.HashMap;
@@ -17,9 +18,9 @@ public class MongoManager extends Manager{
 
         MongoClient mongoClient = new MongoClient("localhost", 27017);
 
-        MongoDatabase database = mongoClient.getDatabase("maquinarefrescos");
+        MongoDatabase database = mongoClient.getDatabase("Libros");
 
-        miColeccion = database.getCollection("depositos");
+        miColeccion = database.getCollection("libro");
 
     }
 
@@ -37,20 +38,57 @@ public class MongoManager extends Manager{
         return libros;
     }
 
+
     @Override
     public void guardarLibros(HashMap<String, Libro> libros) {
-        Document nuevo = new Document();
-
         for (Map.Entry<String, Libro> entry : libros.entrySet()) {
             Libro l = entry.getValue();
+            Document filtro = new Document("id", l.getId()); // Filtro para buscar por id
+            Document nuevo = new Document();
             nuevo.put("id", l.getId());
             nuevo.put("titulo", l.getTitulo());
             nuevo.put("autor", l.getAutor());
             nuevo.put("isbn", l.getIsbn());
             nuevo.put("anno", l.getAnno());
-            miColeccion.insertOne(nuevo);
+
+            // Opciones para la operación de actualización
+            Document updateOperationDocument = new Document("$set", nuevo);
+
+            // Realiza la operación de upsert
+            miColeccion.updateOne(filtro, updateOperationDocument, new UpdateOptions().upsert(true));
         }
     }
+    /*
+    Document query=new Document();
+    Document mayor=new Document();
+    mayor.put("$gt", 100);
+
+
+    db.deposito.update(
+        {
+        "valor":100
+        },
+        {
+        $set:{
+        "cantidad":100
+        }
+       })
+     */
+
+//    @Override
+//    public void guardarLibros(HashMap<String, Libro> libros) {
+//        Document nuevo = new Document();
+//
+//        for (Map.Entry<String, Libro> entry : libros.entrySet()) {
+//            Libro l = entry.getValue();
+//            nuevo.put("id", l.getId());
+//            nuevo.put("titulo", l.getTitulo());
+//            nuevo.put("autor", l.getAutor());
+//            nuevo.put("isbn", l.getIsbn());
+//            nuevo.put("anno", l.getAnno());
+//            miColeccion.insertOne(nuevo);
+//        }
+//    }
 
 
 

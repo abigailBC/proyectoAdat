@@ -11,10 +11,8 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.XMLOutputter;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,21 +79,22 @@ public class BasexManager extends Manager {
 	}
 
 	@Override
-	public void guardarLibros(HashMap<String, Libro> libros){
+	public void guardarLibros(HashMap<String, Libro> libros) {
 		for (Map.Entry<String, Libro> entry : libros.entrySet()) {
 			Libro libro = entry.getValue();
-// Creamos nodo XML (incluyendo "hijos" y nodos de texto
+
+			// Creamos nodo XML (incluyendo "hijos" y nodos de texto)
 			Element nuevo = new Element("libro");
 			Element elem_id = new Element("id");
-			elem_id.setText(entry.getValue().getId());
+			elem_id.setText(libro.getId());
 			Element elem_titulo = new Element("titulo");
-			elem_titulo.setText(entry.getValue().getTitulo());
+			elem_titulo.setText(libro.getTitulo());
 			Element elem_autor = new Element("autor");
-			elem_autor.setText(entry.getValue().getAutor());
+			elem_autor.setText(libro.getAutor());
 			Element elem_isbn = new Element("isbn");
-			elem_isbn.setText(entry.getValue().getIsbn());
+			elem_isbn.setText(libro.getIsbn());
 			Element elem_anno = new Element("anno");
-			elem_anno.setText(String.valueOf(entry.getValue().getAnno()));
+			elem_anno.setText(String.valueOf(libro.getAnno()));
 
 			nuevo.addContent(elem_id);
 			nuevo.addContent(elem_titulo);
@@ -103,24 +102,33 @@ public class BasexManager extends Manager {
 			nuevo.addContent(elem_isbn);
 			nuevo.addContent(elem_anno);
 
-
-			// Formateamos como string y lo añadimos a la query de inserción
+			// Formateamos como string y lo añadimos a la query de inserción o actualización
 			XMLOutputter xmlOut = new XMLOutputter();
 			String formateado = xmlOut.outputString(nuevo);
 
-			String queryInsert = "insert node " + formateado + " into /depositos ";
-
-			// Ejecutamos la query (IMPORTANTE: la base de datos tiene que estar cerrada en BaseX, porque se bloquea)
+			// Verificamos si el libro ya existe en la base de datos
+			String queryCheck = "count(/Libros2.xml/libro[id='" + libro.getId() + "'])";
+			String queryUpdate = "replace node /Libros2.xml/libro[id='" + libro.getId() + "'] with " + formateado;
+			String queryInsert = "insert node " + formateado + " into /Libros2.xml";
 
 			try {
-				queryOtra(queryInsert);
+				String count = new XQuery(queryCheck).execute(context);
+				if (Integer.parseInt(count) > 0) {
+					// Si el libro existe, lo actualizamos
+					queryOtra(queryUpdate);
+					System.out.println("Libro actualizado: " + libro.getId());
+				} else {
+					// Si el libro no existe, lo insertamos
+					queryOtra(queryInsert);
+					System.out.println("Libro insertado: " + libro.getId());
+				}
 			} catch (Exception e) {
-				e.getMessage();
+				e.printStackTrace();
 			}
-
-			System.out.println("== DEPOSITOS INSERTADOS CORRECTAMENTE ==");
 		}
+		System.out.println("== LIBROS ACTUALIZADOS CORRECTAMENTE ==");
 	}
+
 	public void crearBD () {
 		try {
 			new CreateDB(nombrel, ruta).execute(context);
@@ -145,8 +153,6 @@ public class BasexManager extends Manager {
 	}
 
 }
-
-
 	/*para examen:
 	public void pruebaBusqueda() throws Exception {
 			String query = "<respuesta> { //Libro[Autor='YO'] } </respuesta>";
