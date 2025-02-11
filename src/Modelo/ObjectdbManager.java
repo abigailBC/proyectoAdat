@@ -3,6 +3,7 @@ package Modelo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,7 +23,6 @@ public class ObjectdbManager extends Manager {
 		EntityManager em = emf.createEntityManager();
 		TypedQuery<Libro> query = em.createQuery("SELECT b FROM Libro b", Libro.class);
 		List<Libro> results = query.getResultList();
-		results = query.getResultList();
 		for (Libro bb : results) {
 			libros.put(bb.getId(), bb);
 		}
@@ -35,26 +35,44 @@ public class ObjectdbManager extends Manager {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("db/libros.odb");
 		EntityManager em = emf.createEntityManager();
 
-		for (Map.Entry<String, Libro> entry : libros.entrySet()) {
-			Libro libro = entry.getValue();
+		try {
+			em.getTransaction().begin();
 
-			try {
-				em.getTransaction().begin();
-				Libro libroExistente = em.find(Libro.class, libro.getId());
-				if (libroExistente != null) {
+			// Obtener todos los libros de la base de datos
+			TypedQuery<Libro> query = em.createQuery("SELECT b FROM Libro b", Libro.class);
+			List<Libro> results = query.getResultList();
+			Set<String> idsLibrosHM = libros.keySet();
+
+			// Eliminar libros que no están en el HashMap
+			for (Libro libroBbdd : results) {
+				if (!idsLibrosHM.contains(libroBbdd.getId())) {
+					Libro libroAEliminar = em.find(Libro.class, libroBbdd.getId());
+					if (libroAEliminar != null) {
+						em.remove(libroAEliminar); // Elimina el libro
+					}
+				}
+			}
+
+			// Actualizar o insertar libros del HashMap
+			for (Libro libro : libros.values()) {
+				Libro libroExiste = em.find(Libro.class, libro.getId());
+				if (libroExiste != null) {
 					em.merge(libro); // Actualiza si existe
 				} else {
 					em.persist(libro); // Inserta si no existe
 				}
-				em.getTransaction().commit();
-			} catch (Exception e) {
-				if (em.getTransaction().isActive()) {
-					em.getTransaction().rollback();
-				}
-				e.printStackTrace();
 			}
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			if (em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			em.close();
+			emf.close();
 		}
-		em.close();
 	}
 }
 

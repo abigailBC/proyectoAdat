@@ -13,9 +13,7 @@ import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class BasexManager extends Manager {
@@ -80,6 +78,20 @@ public class BasexManager extends Manager {
 
 	@Override
 	public void guardarLibros(HashMap<String, Libro> libros) {
+		// Primero, recopilamos todos los IDs de los libros en la base de datos
+		Set<String> idsEnBaseDeDatos = new HashSet<>();
+		try {
+			String queryGetIds = "for $id in /Libros2.xml/libro/id return string($id)";
+			String result = new XQuery(queryGetIds).execute(context);
+			String[] ids = result.split("\n");
+			for (String id : ids) {
+				idsEnBaseDeDatos.add(id.trim());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// Luego, actualizamos o insertamos los libros del HashMap
 		for (Map.Entry<String, Libro> entry : libros.entrySet()) {
 			Libro libro = entry.getValue();
 
@@ -126,6 +138,21 @@ public class BasexManager extends Manager {
 				e.printStackTrace();
 			}
 		}
+
+		// Finalmente, eliminamos los libros que no están en el HashMap
+		Set<String> idsEnHashMap = libros.keySet();
+		idsEnBaseDeDatos.removeAll(idsEnHashMap); // Quedan solo los IDs que no están en el HashMap
+
+		for (String id : idsEnBaseDeDatos) {
+			try {
+				String queryDelete = "delete node /Libros2.xml/libro[id='" + id + "']";
+				queryOtra(queryDelete);
+				System.out.println("Libro eliminado: " + id);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		System.out.println("== LIBROS ACTUALIZADOS CORRECTAMENTE ==");
 	}
 
@@ -159,4 +186,3 @@ public class BasexManager extends Manager {
 			querySelect(query);
 		}
 	 */
-
