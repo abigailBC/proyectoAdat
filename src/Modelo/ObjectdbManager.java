@@ -2,13 +2,11 @@ package Modelo;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 public class ObjectdbManager extends Manager {
 	HashMap<String, Libro> libros = new HashMap<>();
@@ -27,11 +25,12 @@ public class ObjectdbManager extends Manager {
 			libros.put(bb.getId(), bb);
 		}
 		em.close();
+		emf.close();
 		return libros;
 	}
 
 	@Override
-	public void guardarLibros(HashMap<String, Libro> libros) {
+	public boolean guardarLibros(HashMap<String, Libro> libros) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("db/libros.odb");
 		EntityManager em = emf.createEntityManager();
 
@@ -69,10 +68,12 @@ public class ObjectdbManager extends Manager {
 				em.getTransaction().rollback();
 			}
 			e.printStackTrace();
+			return false;
 		} finally {
 			em.close();
 			emf.close();
 		}
+		return true;
 	}
 }
 

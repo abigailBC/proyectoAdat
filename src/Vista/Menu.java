@@ -10,8 +10,18 @@ public class Menu {
 	public int menu1() {
 		int tipoFichero=0;
 		try {
-			System.out.println("Bienvenido. Elija una opción:\n1.Fichero de texto"
-					+ "\n2.Fichero Binario\n3.Fichero XML\n4.Base de datos\n5.Hibernate\n6.SQLite\n7.PHP\n8.Objectdb\n9.BaseX\n10.Mongo\n0.Salir");
+			System.out.println("Bienvenido. Elija una opción:" +
+					"\n1.Fichero de texto"
+					+"\n2.Fichero Binario" +
+					"\n3.Fichero XML" +
+					"\n4.Base de datos" +
+					"\n5.Hibernate" +
+					"\n6.SQLite" +
+					"\n7.PHP" +
+					"\n8.Objectdb" +
+					"\n9.BaseX" +
+					"\n10.MongoDB" +
+					"\n0.Salir");
 			tipoFichero = sc.nextInt();
 			return tipoFichero;
 
@@ -26,8 +36,14 @@ public class Menu {
 		int tipoaccion=0;
 
 		try {
-			System.out.println("¿Qué quieres hacer?\n1.Leer uno\n2.Leer muchos"
-					+ "\n3.Insertar uno\n4.Insertar muchos\n5.Modificar\n6.Borrar\n7.Trasladar a otro tipo de archivo\n0.Volver");
+			System.out.println("¿Qué quieres hacer?\n1.Leer uno" +
+					"\n2.Leer muchos"
+					+ "\n3.Insertar uno" +
+					"\n4.Insertar muchos" +
+					"\n5.Modificar" +
+					"\n6.Borrar" +
+					"\n7.Trasladar a otro tipo de acceso a datos" +
+					"\n0.Volver");
 			tipoaccion = sc.nextInt();
 			return tipoaccion;
 		}catch(InputMismatchException e) {
@@ -48,7 +64,18 @@ public class Menu {
 		 * System.out.println(Menu3+i); }
 		 */
 		System.out.println(
-				"Introduce el tipo de archivo al que quieres convertir: \n1.A texto\n2.A binario\n3.A XML\n4.Base de datos\n5.Hibernate\n6.SQLite\n.0Volver");
+				"Introduce el tipo de archivo al que quieres convertir: " +
+						"\n1.A texto" +
+						"\n2.A binario" +
+						"\n3.A XML" +
+						"\n4.Base de datos" +
+						"\n5.Hibernate" +
+						"\n6.SQLite" +
+						"\n7.PHP" +
+						"\n8.Objectdb" +
+						"\n9.BaseX" +
+						"\n10.MongoDB" +
+						"\n0.Volver");
 		cambioArchivo = sc.nextInt();
 		return cambioArchivo;
 	}

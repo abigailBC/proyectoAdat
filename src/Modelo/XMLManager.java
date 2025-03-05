@@ -74,7 +74,7 @@ public class XMLManager extends Manager {
 	}
 
 	@Override
-	public void guardarLibros(HashMap<String, Libro> libros) {
+	public boolean guardarLibros(HashMap<String, Libro> libros) {
 		try {
 			// Crear el elemento raíz <libros>
 			Element raizLibros = new Element("libros");
@@ -110,11 +110,16 @@ public class XMLManager extends Manager {
 		} catch (IOException e) {
 			System.out.println("Error al sobrescribir el archivo XML: " + e.getMessage());
 			e.printStackTrace();
+			return false;
+
 		} catch (Exception e) {
 			System.out.println("Error al procesar el documento XML: " + e.getMessage());
 			e.printStackTrace();
+			return false;
+
 		}
 
+		return true;
 	}
 
 }

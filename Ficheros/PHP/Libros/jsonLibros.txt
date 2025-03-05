@@ -1,0 +1,41 @@
+//si va bien
+{
+	“estado”: “OK”,
+	“libros” : [
+		{
+			“id”:1,
+			“titulo”: “Noche brillante”,
+			“autor”:"Paco",
+			“isbn”:"fsj81",
+			"anno":2025
+		},
+		{
+			“id”:2,
+			“titulo”: “Noche oscura”,
+			“autor”:"Paca",
+			“isbn”:"fsj81r",
+			"anno":2024
+		}
+}
+//si va mal
+{
+	“estado”: “KO”,
+	“error”: “Ha ocurrido un error en…”
+}
+
+MANDAR INFORMACIÓN:
+//peticion
+{
+	“peticion”: “add”,
+	”addedPlayer”:{
+		“name”:”Luis”,
+		“number”:18,
+		“teamId”:1
+	}
+}
+//respuesta del servidor
+{
+	“estado”:”OK”,
+	“texto”:”Jugador insertado correctamente”,
+	“idUltimoInsertado”:99
+}

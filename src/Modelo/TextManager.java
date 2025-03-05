@@ -38,7 +38,7 @@ public class TextManager extends Manager{
 	public HashMap<String, Libro> recorrer() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(ruta));
-			String linea = new String();
+			String linea;
 			
 			while((linea=br.readLine())!=null) {
 				//System.out.println(linea); (de comprobación)
@@ -55,7 +55,7 @@ public class TextManager extends Manager{
 	}
 	
 	@Override
-	public void guardarLibros(HashMap<String, Libro> libros) {
+	public boolean guardarLibros(HashMap<String, Libro> libros) {
 
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
@@ -66,8 +66,11 @@ public class TextManager extends Manager{
 			bw.close();
 		}catch(Exception e) {
 			System.err.println("Error al sobrescribir el archivo txt: "+e.getMessage());
+			return false;
+
 		}
-		
+
+		return true;
 	}
 }
 	

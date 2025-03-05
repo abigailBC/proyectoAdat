@@ -92,7 +92,7 @@ public class SqliteManager extends Manager {
 	}
 
 	@Override
-	public void guardarLibros(HashMap<String, Libro> libros) {
+	public boolean guardarLibros(HashMap<String, Libro> libros) {
 		conectarBD();
 
 		try {
@@ -114,7 +114,10 @@ public class SqliteManager extends Manager {
 
 		} catch (SQLException e) {
 			System.err.println("Error al sobrescribir los datos con SQLite: "+e.getMessage());
+			return false;
+
 		}
+		return true;
 	}
 
 }

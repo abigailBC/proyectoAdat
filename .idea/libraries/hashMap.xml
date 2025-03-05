@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="hashMap">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libs/hashMap" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/libs/hashMap" recursive="false" />
+  </library>
+</component>
