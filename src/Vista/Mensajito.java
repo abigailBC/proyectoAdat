@@ -60,7 +60,7 @@ public class Mensajito {
 	}
 
 	public void mostrarLibro(Libro libro) {
-		System.out.println(libro.toString());
+		System.out.println("Libro consultado: "+libro.toString());
 	}
 
 	

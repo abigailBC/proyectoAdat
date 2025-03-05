@@ -4,14 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c12df92-abcc-4815-b24e-61525c01a1a3" name="Changes" comment="Implementación BaseX y Mongo">
+    <list default="true" id="1c12df92-abcc-4815-b24e-61525c01a1a3" name="Changes" comment="Arreglo borrado ObjectDB, BaseX, Hibernate y MongoDB">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/hashMap.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ficheros/PHP/Libros/actualizarLibros.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ficheros/PHP/Libros/bbdd.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ficheros/PHP/Libros/borrarLibros.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ficheros/PHP/Libros/guardarLibros.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ficheros/PHP/Libros/jsonEsperado.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ficheros/PHP/Libros/jsonLibros.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ficheros/PHP/Libros/leerLibros.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/hashMap/guava-33.4.0-jre.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Auxiliar/ApiRequests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Modelo/CRUDDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ficheros/Libros.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ficheros/Libros.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ficheros/libros.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Ficheros/libros.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoDefinitivo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoDefinitivo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/libros.odb" beforeDir="false" afterPath="$PROJECT_DIR$/db/libros.odb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/libros.odb$" beforeDir="false" afterPath="$PROJECT_DIR$/db/libros.odb$" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/libros.odb$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controlador/Inicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador/Inicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/BasexManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/BasexManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/BbddManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/BbddManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/BinaryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/BinaryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/HibernateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/HibernateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/MongoManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/MongoManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/ObjectdbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/ObjectdbManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/PhpManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/PhpManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/SqliteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/SqliteManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/TextManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/TextManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/XMLManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/XMLManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vista/Mensajito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vista/Mensajito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vista/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vista/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +46,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -43,12 +68,13 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;rama1&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mixol/Downloads/ADAT_BasketHiber_V2_0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mixol/segundoCurso/ProyectoDefinitivo/Ficheros/PHP&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/mixol/segundoCurso/ProyectoDefinitivo/PHP/src/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -58,8 +84,13 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mixol\segundoCurso\ProyectoDefinitivo\Ficheros\PHP" />
+      <recent name="C:\Users\mixol\segundoCurso\ProyectoDefinitivo\src\Auxiliar" />
       <recent name="C:\Users\mixol\segundoCurso\ProyectoDefinitivo\libs\mongo" />
       <recent name="C:\Users\mixol\segundoCurso\ProyectoDefinitivo\libs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mixol\segundoCurso\ProyectoDefinitivo\libs\hashMap" />
     </key>
   </component>
   <component name="RunManager">
@@ -112,7 +143,22 @@
       <workItem from="1738782896265" duration="3780000" />
       <workItem from="1739201688312" duration="8837000" />
       <workItem from="1739267192484" duration="7615000" />
-      <workItem from="1739285406446" duration="3239000" />
+      <workItem from="1739285406446" duration="7826000" />
+      <workItem from="1739363058155" duration="445000" />
+      <workItem from="1739371531557" duration="9132000" />
+      <workItem from="1739473830523" duration="1083000" />
+      <workItem from="1739557290698" duration="2023000" />
+      <workItem from="1739807511493" duration="1632000" />
+      <workItem from="1739902651244" duration="87000" />
+      <workItem from="1740046977618" duration="2916000" />
+      <workItem from="1740063061520" duration="16141000" />
+      <workItem from="1740167584670" duration="939000" />
+      <workItem from="1740235275488" duration="31606000" />
+      <workItem from="1740346987059" duration="214000" />
+      <workItem from="1740413881270" duration="10000" />
+      <workItem from="1740421361965" duration="612000" />
+      <workItem from="1741041147894" duration="11000" />
+      <workItem from="1741192891049" duration="2555000" />
     </task>
     <task id="LOCAL-00001" summary="Actualización Objectdb y menú">
       <option name="closed" value="true" />
@@ -154,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739270413678</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Arreglo borrado ObjectDB, BaseX, Hibernate y MongoDB">
+      <option name="closed" value="true" />
+      <created>1739288712810</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1739288712810</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +229,35 @@
     <MESSAGE value="Actualización Objectdb y menú" />
     <MESSAGE value="Actualización Objectdb y menú 2" />
     <MESSAGE value="Implementación BaseX y Mongo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementación BaseX y Mongo" />
+    <MESSAGE value="Arreglo borrado ObjectDB, BaseX, Hibernate y MongoDB" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arreglo borrado ObjectDB, BaseX, Hibernate y MongoDB" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Modelo/BasexManager.java</url>
+          <line>173</line>
+          <properties class="Modelo.BasexManager" method="annadirActualizados">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.nio.channels.OverlappingFileLockException" package="java.nio.channels" />
+          <option name="timeStamp" value="13" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/PHP/src/Main.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XPathView.XPathProjectComponent">
+    <history />
+    <find-history />
   </component>
 </project>

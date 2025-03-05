@@ -70,7 +70,7 @@ public class BbddManager extends Manager{
 
 
 	@Override
-	public void guardarLibros(HashMap<String, Libro> libros) {
+	public boolean guardarLibros(HashMap<String, Libro> libros) {
 		try {
 			AccesoBD();
 			//Se elimina la información dentro de la tabla
@@ -93,8 +93,10 @@ public class BbddManager extends Manager{
 
 		} catch (Exception e) {
 			System.err.println("Error al sobrescribir la base de datos: "+e.getMessage());
+			return false;
 		}
-		
+
+		return true;
 	}
 
 	public void closeConn() {

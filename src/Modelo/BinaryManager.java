@@ -74,7 +74,7 @@ public class BinaryManager extends Manager implements Serializable {
 					String clave = libro.getId();
 					libros.put(clave, libro);
 				} catch (EOFException e) {
-					System.out.println("El fichero binario está vacío");
+					System.out.println("El fichero binario podría estar vacío");
 					break;
 				}catch(Exception e) {
 					System.out.println("Error al leer el fichero binario: "+e.getMessage());
@@ -93,7 +93,7 @@ public class BinaryManager extends Manager implements Serializable {
 
 	// sobreescribir el fichero binario
 	@Override
-	public void guardarLibros(HashMap<String, Libro> libros) {
+	public boolean guardarLibros(HashMap<String, Libro> libros) {
 		try {
 			// Abrimos el archivo en modo de escritura, sobrescribe el archivo existente
 			FileOutputStream fos = new FileOutputStream(ruta);
@@ -111,5 +111,6 @@ public class BinaryManager extends Manager implements Serializable {
 			System.out.println("Error al sobrescribir el archivo binario: " + e.getMessage());
 			e.printStackTrace();
 		}
+		return true;
 	}
 }

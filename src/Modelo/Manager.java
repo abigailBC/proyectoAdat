@@ -14,7 +14,7 @@ public abstract class Manager {
 	
 	public abstract HashMap<String, Libro> recorrer();
 	
-	public abstract void guardarLibros(HashMap<String, Libro> libros);
+	public abstract boolean guardarLibros(HashMap<String, Libro> libros);
 
 //Métodos comunes. Se heredan.
 	
@@ -29,8 +29,9 @@ public abstract class Manager {
 		boolean todoOk=false;
 		try {
 			libros.put(libro.getId(), libro);
-			guardarLibros(libros);
-			todoOk=true;
+			if(guardarLibros(libros)){
+				todoOk=true;
+			}
 		}catch(Exception e) {
 			System.out.println("Ha habido un problema añadiendo el dato: "+e.getMessage());
 		}
@@ -46,8 +47,9 @@ public abstract class Manager {
 				Libro valor= entry.getValue();
 				libros.put(clave, valor);
 			}
-			guardarLibros(libros);
-			todoOk=true;
+			if(guardarLibros(libros)){
+				todoOk=true;
+			}
 		}catch(Exception e) {
 			System.out.println("Ha habido un problema añadiendo los datos: "+e.getMessage());
 		}
@@ -61,8 +63,9 @@ public abstract class Manager {
 		boolean todoOk=false;
 		try {
 			libros.put(libroEditado.getId(), libroEditado);
-			guardarLibros(libros);
-			todoOk=true;
+			if(guardarLibros(libros)){
+				todoOk=true;
+			}
 		}catch(Exception e) {
 			System.out.println("Ha habido un problema editando el dato: "+e.getMessage());
 		}

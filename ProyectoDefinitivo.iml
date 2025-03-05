@@ -345,5 +345,6 @@
     </orderEntry>
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="mongo" level="project" />
+    <orderEntry type="library" name="hashMap" level="project" />
   </component>
 </module>
